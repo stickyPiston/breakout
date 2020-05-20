@@ -1,0 +1,27 @@
+@font-face  {
+  font-family: pixelmania;
+  src: url("res/Pixelmania.ttf");
+}
+
+@font-face  {
+  font-family: forced;
+  src: url("res/FORCED\ SQUARE.ttf");
+}
+
+html, body {
+  margin: 0;
+  overflow: hidden;
+}
+
+#paused {
+  font-family: forced;
+  font-size: 48px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  text-align: center;
+  z-index: 1000;
+  color: white;
+}

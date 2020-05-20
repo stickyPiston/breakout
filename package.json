@@ -1,0 +1,39 @@
+{
+  "name": "breakout",
+  "version": "1.0.0",
+  "description": "The retro breakout game built using asdf-games and electron.",
+  "main": "main.js",
+  "scripts": {
+    "start": "concurrently \"tsc -w\" \"cross-env NODE_ENV=DEV electron .\"",
+    "build:all": "electron-builder build -mwl",
+    "build:win": "electron-builder build --windows",
+    "build:mac": "electron-builder build --mac",
+    "build:linux": "electron-builder build --linux",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "keywords": [
+    "game",
+    "electron",
+    "breakout"
+  ],
+  "author": {
+    "name": "Job Vonk",
+    "email": "job@jobbel.nl",
+    "url": "https://jobbel.nl"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/discord-rpc": "^3.0.4",
+    "@types/socket.io-client": "^1.4.32",
+    "concurrently": "^5.2.0",
+    "cross-env": "^7.0.2",
+    "electron": "^9.0.0-beta.24",
+    "electron-builder": "^22.6.1",
+    "typescript": "^3.9.2"
+  },
+  "dependencies": {
+    "asdf-games": "^1.1.1",
+    "discord-rpc": "^3.1.1",
+    "socket.io-client": "^2.3.0"
+  }
+}
