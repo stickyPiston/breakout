@@ -1,6 +1,6 @@
 {
   "name": "breakout",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "The retro breakout game built using asdf-games and electron.",
   "main": "main.js",
   "scripts": {
@@ -21,6 +21,12 @@
     "email": "job@jobbel.nl",
     "url": "https://jobbel.nl"
   },
+  "homepage": "https://github.com/stickyPiston/breakout",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stickyPiston/breakout.git"
+  },
+  "bugs": "https://github.com/stickyPiston/breakout/issues",
   "license": "ISC",
   "devDependencies": {
     "@types/discord-rpc": "^3.0.4",
