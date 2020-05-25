@@ -1,11 +1,33 @@
 {
-  "name": "electron-webpack-quick-start",
-  "version": "0.0.0",
-  "license": "MIT",
+  "name": "breakout",
+  "version": "0.1.0",
+  "license": "ISC",
+	"description": "The retro breakout game built using asdf-games and electron.",
+	"main": "src/main/main.ts",
+	"keywords": [
+    "game",
+    "electron",
+    "breakout"
+  ],
+  "author": {
+    "name": "Job Vonk",
+    "email": "job@jobbel.nl",
+    "url": "https://jobbel.nl"
+  },
+  "homepage": "https://github.com/stickyPiston/breakout",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stickyPiston/breakout.git"
+  },
+  "bugs": "https://github.com/stickyPiston/breakout/issues",
   "scripts": {
-    "dev": "electron-webpack dev",
+    "start": "electron-webpack dev",
     "compile": "electron-webpack",
-    "dist": "npm compile && electron-builder"
+    "build:all": "npm run compile && electron-builder build -mwl",
+		"build:win": "npm run compile && electron-builder build --windows",
+    "build:mac": "npm run compile && electron-builder build --mac",
+    "build:linux": "npm run compile && electron-builder build --linux",
+		"postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
     "asdf-games": "^1.1.1",

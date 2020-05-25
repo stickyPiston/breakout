@@ -31,9 +31,6 @@ export class GameOverScene extends Container<Text | Rect> {
     this.add(scoreText);
 
 		// TODO: Add highscore to database
-		const highscores = JSON.parse(readFileSync(highscorePath).toString());
-		highscores.push({ score: points, date: Date.now(), type: "singleplayer" });
-		writeFileSync(highscorePath, JSON.stringify(highscores));
 
 		Timer.getInstance().resetTimer();
   }

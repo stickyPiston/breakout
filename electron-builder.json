@@ -1,0 +1,35 @@
+{
+  "productName": "breakout",
+  "directories": {
+    "output": "release/"
+  },
+  "copyright": "Made by Job Vonk",
+  "files": [
+    "dist/**/*"
+  ],
+  "win": {
+    "target": {
+      "target": "portable",
+      "arch": [
+        "x64",
+        "ia32"
+      ]
+    }
+  },
+  "mac": {
+    "target": {
+      "target": "dmg"
+    },
+    "category": "public.app-category.arcade-games"
+  },
+  "linux": {
+    "target": {
+      "target": "AppImage",
+      "arch": [
+        "x64",
+        "arm64"
+      ]
+    },
+    "category": "Game"
+  }
+}
