@@ -18,24 +18,24 @@ export class MainMenu extends Container<Rect | Text> {
 
     // Add title
     const title = new Text("BREAKOUT", { font: "24px pixelmania", fill: "#fff" });
-    title.pos = { x: (800 - 300) / 2, y: 125 };
+    title.pos = { x: (800 - 300) / 2, y: 75 };
     this.add(title);
 
     // Add press space to start text
     const pressS = new Text("> Play singleplayer mode", { font: "24px forced", fill: "#fff" });
-    pressS.pos = { x: (800 - 270) / 2, y: 200 };
+    pressS.pos = { x: (800 - 270) / 2, y: 150 };
     this.add(pressS);
 
     const pressM = new Text("Play multiplayer mode", { font: "24px forced", fill: "#fff" });
-    pressM.pos = { x: (800 - 243) / 2, y: 240 };
+    pressM.pos = { x: (800 - 243) / 2, y: 190 };
     this.add(pressM);
 
     const pressH = new Text("Help", { font: "24px forced", fill: "#fff" });
-    pressH.pos = { x: (800 - 70) / 2, y: 280};
+    pressH.pos = { x: (800 - 70) / 2, y: 230};
     this.add(pressH);
 
     const pressT = new Text("Settings", { font: "24px forced", fill: "#fff" });
-    pressT.pos = { x: (800 - 120) / 2, y: 320};
+    pressT.pos = { x: (800 - 120) / 2, y: 270};
     this.add(pressT);
 
     const credit = new Text("This game is made by Job Vonk", { font: "18px forced", fill: "#fff" });
@@ -92,7 +92,7 @@ export class MainMenu extends Container<Rect | Text> {
       else if (this.selectedIndex === 2)
         SceneManager.getInstance().setScene(1);
 			else if (this.selectedIndex === 3)
-				SceneManager.getInstance().setScene(10);
+				SceneManager.getInstance().setScene(8);
     }
 
     // Periodically toggle text

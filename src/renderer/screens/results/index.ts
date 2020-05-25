@@ -78,8 +78,6 @@ export class ResultsScene extends Container<Rect | Text> {
 			SceneManager.getInstance().setScene(0);
 		}
 
-		// TODO: Add fancy animations and fix styling
-
 		if (this.children[7]) {
 			this.period -= dt;
 

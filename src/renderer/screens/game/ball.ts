@@ -1,4 +1,4 @@
-import { Rect, Container, entity, Sound, math } from "asdf-games";
+import { Rect, entity, Sound, math } from "asdf-games";
 import { Player } from "./player";
 import { Score } from "./helpers/score";
 import { Lives } from "./helpers/lives";

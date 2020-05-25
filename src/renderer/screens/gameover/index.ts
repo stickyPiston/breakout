@@ -24,11 +24,16 @@ export class GameOverScene extends Container<Text | Rect> {
     pressSpace.pos = { x: 270, y: 275 };
     this.add(pressSpace);
 
-    // Add instructions
-    const points = Score.getInstance().getScore();
+    // TODO: Calculate score like it's done in multiplayer mode
+		const points = Score.getInstance().getScore();
     const scoreText = new Text(`SCORE: ${points}`, { font: "24px forced", fill: "#fff" });
     scoreText.pos = { x: 330, y: 200 };
     this.add(scoreText);
+
+		// TODO: Add highscore to database
+		const highscores = JSON.parse(readFileSync(highscorePath).toString());
+		highscores.push({ score: points, date: Date.now(), type: "singleplayer" });
+		writeFileSync(highscorePath, JSON.stringify(highscores));
 
 		Timer.getInstance().resetTimer();
   }

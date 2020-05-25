@@ -5,7 +5,7 @@ export class Timer extends Text {
 
 	startTime = Date.now();
 	private running = true;
-	private stoppedTime: number;
+	private stoppedTime: number = 0;
 
 	get time() {
 		if (this.running) return Date.now() - this.startTime;

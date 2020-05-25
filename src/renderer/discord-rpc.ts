@@ -1,6 +1,6 @@
 import * as DiscordRPC from "discord-rpc";
 import { SceneManager } from "./scenemanager";
-import { remote, ipcRenderer } from "electron";
+import { ipcRenderer } from "electron";
 
 export class Discord {
 	private static instance: Discord;

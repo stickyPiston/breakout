@@ -4,7 +4,10 @@ import { Discord } from "./discord-rpc";
 import { SettingsScene } from "./screens/settings/index";
 import { Multiplayer } from "./screens/game/helpers/multiplayer";
 
-// TODO: Initialize electron-builder
+// Webpack imports
+import './index.css';
+import './sound.ts';
+
 // TODO: Make a logo
 // TODO: Fix typescript compiled files placement
 
@@ -31,12 +34,14 @@ document.addEventListener("keydown", e => {
 				"./res/sound/pause_in.wav",
 				{ volume: SettingsScene.getInstance().get("volume") }
 			).play();
+			// @ts-ignore
       document.getElementById("paused").style.display = "block";
     } else {
       new Sound(
 				"./res/sound/pause_out.wav",
 				{ volume: SettingsScene.getInstance().get("volume") }
 			).play();
+			// @ts-ignore
       document.getElementById("paused").style.display = "none";
     }
   }

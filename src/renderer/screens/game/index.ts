@@ -4,7 +4,6 @@ import { Ball } from "./ball";
 import { Score } from "./helpers/score";
 import { Lives } from "./helpers/lives";
 import { Level } from "./helpers/level";
-import { keys } from "../../constants";
 import { SceneManager } from "../../scenemanager";
 import { PowerupManager } from "./helpers/powerup";
 import { Blocks } from "./blocks";

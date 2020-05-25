@@ -1,4 +1,4 @@
-import { Rect, KeyControls } from "asdf-games";
+import { Rect } from "asdf-games";
 import { keys } from "../../constants"
 
 export class Player extends Rect {

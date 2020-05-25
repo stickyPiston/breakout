@@ -30,7 +30,7 @@ export class SearchingScene extends Container<Text | Rect> {
 		SearchingScene.instance.opponentFound = false;
 		SearchingScene.instance.countdown = 3;
 		SearchingScene.instance.period = 0.75;
-		SearchingScene.instance.children[1].text = "Searching for an opponent...";
+		(SearchingScene.instance.children[1] as Text).text = "Searching for an opponent...";
 
 		if (!socket.connected) socket.open();
 		socket.emit("identification", { gameID: "brek", playersMax: 2 });
@@ -51,8 +51,8 @@ export class SearchingScene extends Container<Text | Rect> {
 		if (this.opponentFound) {
 			this.countdown -= dt;
 
-			this.children[1].style.fill = "#fff";
-			this.children[1].text = "Opponent Found! Starting game in " + Math.ceil(this.countdown);
+			(this.children[1] as Text).style.fill = "#fff";
+			(this.children[1] as Text).text = "Opponent Found! Starting game in " + Math.ceil(this.countdown);
 			this.children[1].pos.x = 230;
 		} else {
     	// Periodically toggle text

@@ -41,6 +41,8 @@ export class Powerup extends Rect {
   }
 
   private powerupEffect() {
+		// TODO: Add revert controls powerup
+		// TODO: Add mini powerup against opponent in multiplayer.
     if (this.type === "long") Player.getInstance().w = 150;
     if (this.type === "small") Player.getInstance().w = 50;
     // @ts-ignore

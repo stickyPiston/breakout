@@ -1,6 +1,6 @@
-node_modules
-src/**/*.js
-src/**/*.js.map
-._*
 .DS_Store
-release
+dist/
+node_modules/
+thumbs.db
+.idea/
+._*
