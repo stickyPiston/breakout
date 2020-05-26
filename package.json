@@ -2,9 +2,9 @@
   "name": "breakout",
   "version": "0.1.0",
   "license": "ISC",
-	"description": "The retro breakout game built using asdf-games and electron.",
-	"main": "src/main/main.ts",
-	"keywords": [
+  "description": "The retro breakout game built using asdf-games and electron.",
+  "main": "dist/main/main.js",
+  "keywords": [
     "game",
     "electron",
     "breakout"
@@ -23,11 +23,13 @@
   "scripts": {
     "start": "electron-webpack dev",
     "compile": "electron-webpack",
+    "test": "npm run compile && ava",
+		"build": "npm run compile && electron-builder build",
     "build:all": "npm run compile && electron-builder build -mwl",
-		"build:win": "npm run compile && electron-builder build --windows",
+    "build:win": "npm run compile && electron-builder build --windows",
     "build:mac": "npm run compile && electron-builder build --mac",
     "build:linux": "npm run compile && electron-builder build --linux",
-		"postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
     "asdf-games": "^1.1.1",
@@ -38,10 +40,12 @@
   "devDependencies": {
     "@types/discord-rpc": "^3.0.4",
     "@types/socket.io-client": "^1.4.33",
-    "electron": "8.2.0",
+    "ava": "^3.8.2",
+    "electron": "^9.0.0",
     "electron-builder": "^22.4.1",
     "electron-webpack": "^2.8.2",
     "electron-webpack-ts": "^4.0.1",
+    "spectron": "^11.0.0",
     "typescript": "^3.9.3",
     "webpack": "~4.42.1"
   }

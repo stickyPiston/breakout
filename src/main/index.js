@@ -4,7 +4,8 @@ import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { format as formatUrl } from 'url'
 
-const isDevelopment = process.env.NODE_ENV !== 'production'
+const isSpectron = process.env.SPECTRON === '1'
+const isDevelopment = process.env.NODE_ENV !== 'production' && !isSpectron
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow
@@ -23,11 +24,19 @@ function createMainWindow() {
   if (isDevelopment) {
     window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
   } else {
-    window.loadURL(formatUrl({
-      pathname: path.join(__dirname, 'index.html'),
-      protocol: 'file',
-      slashes: true
-    }))
+    if (isSpectron) {
+			window.loadURL(formatUrl({
+				pathname: path.join(__dirname, '../', 'renderer', 'index.html'),
+				protocol: 'file',
+				slashes: true
+			}))
+		} else {
+			window.loadURL(formatUrl({
+				pathname: path.join(__dirname, 'index.html'),
+				protocol: 'file',
+				slashes: true
+			}))
+		}
   }
 
   window.on('closed', () => {
