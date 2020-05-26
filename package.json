@@ -32,7 +32,7 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "asdf-games": "^1.1.1",
+    "asdf-games": "^1.1.4",
     "discord-rpc": "^3.1.1",
     "socket.io-client": "^2.3.0",
     "source-map-support": "^0.5.16"
