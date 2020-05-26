@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+- lts/*
+
+os:
+- linux
+- osx
+- windows
+
+services:
+  - xvfb
+
+before_script:
+- "export DISPLAY=:99.0"
+
+install:
+- npm install
+
+script:
+- npm run test
+- npm run build
