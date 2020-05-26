@@ -11,7 +11,19 @@ module.exports = {
         		}
 					}
 				]
-      }
+      },
+			{
+				test: /\.json$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'database/[name].[ext]'		
+						}
+					}
+				],
+				type: 'javascript/auto',
+			}
     ]
   }
 }

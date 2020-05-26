@@ -7,7 +7,7 @@ export class Level extends Text {
     y: 20
   }
 
-  private level = 0;
+  private level = 1;
 
   private constructor() {
     super("LEVEL: 0", { font: "20px forced", fill: "#fff" });

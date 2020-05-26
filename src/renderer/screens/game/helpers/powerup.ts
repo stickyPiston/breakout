@@ -3,7 +3,7 @@ import { Player } from "../player";
 import { Blocks } from "../blocks";
 import { Ball } from "../ball";
 import { Lives } from "./lives";
-import { Score } from "./score";
+import { ScoreHelper } from "./score";
 import { Background } from "../background";
 import { SettingsScene } from "../../settings/index";
 
@@ -62,7 +62,7 @@ export class Powerup extends Rect {
 				"./res/sound/powerup.wav",
 				{ volume: SettingsScene.getInstance().get("volume") }
 			).play();
-      Score.getInstance().addScore(50);
+			ScoreHelper.getInstance().addScore(50);
       Background.getInstance().setColor("#fff");
       this.powerupEffect();
     }

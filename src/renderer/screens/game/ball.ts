@@ -1,6 +1,6 @@
 import { Rect, entity, Sound, math } from "asdf-games";
 import { Player } from "./player";
-import { Score } from "./helpers/score";
+import { ScoreHelper } from "./helpers/score";
 import { Lives } from "./helpers/lives";
 import { Level } from "./helpers/level";
 import { SceneManager } from "../../scenemanager";
@@ -97,7 +97,7 @@ export class Ball extends Rect {
         this.angle = 2 * Math.PI - this.angle;
         // @ts-ignore
         block.dead = true;
-        Score.getInstance().addScore(100 * Level.getInstance().getLevel());
+        ScoreHelper.getInstance().addScore(100 * Level.getInstance().getLevel());
         this.speed += 10 * Level.getInstance().getLevel();
         PowerupManager.getInstance().generatePowerup(block.pos);
         playSound();

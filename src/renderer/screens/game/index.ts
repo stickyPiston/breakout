@@ -1,7 +1,7 @@
 import { Container, Rect } from "asdf-games";
 import { Player } from "./player";
 import { Ball } from "./ball";
-import { Score } from "./helpers/score";
+import { ScoreHelper } from "./helpers/score";
 import { Lives } from "./helpers/lives";
 import { Level } from "./helpers/level";
 import { SceneManager } from "../../scenemanager";
@@ -16,7 +16,7 @@ import { Timer } from "./helpers/timer";
 // TODO: Add party powerup with bar filling up.
 
 export class GameScene extends Container<
-  Rect | Player | Ball | Level | Score | Lives | Container<unknown> | PowerupManager | Blocks | Timer
+  Rect | Player | Ball | Level | ScoreHelper | Lives | Container<unknown> | PowerupManager | Blocks | Timer
 > {
   private static instance: GameScene;
 
@@ -32,17 +32,7 @@ export class GameScene extends Container<
   resetGame() {
     this.children = [];
 
-		if (Level.getInstance().getLevel() === 0) {
-			Score.getInstance().resetScore();
-			Lives.getInstance().setLives(3);
-			Timer.getInstance().resetTimer();	
-     	Level.getInstance().addLevel();
-		}
-
-		if (Multiplayer.getInstance().enabled) {
-			Lives.getInstance().setLives(3);
-			Level.getInstance().setLevel(1);
-		}
+		if (Level.getInstance().getLevel() === 1) Timer.getInstance().resetTimer();
 
     // Add black background
     this.add(Background.getInstance());
@@ -62,11 +52,9 @@ export class GameScene extends Container<
     this.add(Ball.getInstance());
 
     // Add stats
-		if (Multiplayer.getInstance().enabled) Score.getInstance().resetScore();
-    this.add(Score.getInstance());
+    this.add(ScoreHelper.getInstance());
     if (Level.getInstance().getLevel() !== 1) Lives.getInstance().addLife();
     this.add(Lives.getInstance());
-		if (Multiplayer.getInstance().enabled) Timer.getInstance().resetTimer();
 		this.add(Timer.getInstance());
     if (!Multiplayer.getInstance().enabled) this.add(Level.getInstance());
 

@@ -9,7 +9,6 @@ import './index.css';
 import './sound.ts';
 
 // TODO: Make a logo
-// TODO: Fix typescript compiled files placement
 
 const game = new Game(800, 400, true);
 

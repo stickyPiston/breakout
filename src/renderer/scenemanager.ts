@@ -10,6 +10,7 @@ import { GameScene } from "./screens/game/index";
 import { SpectateScene } from "./screens/spectate/index";
 import { ResultsScene } from "./screens/results/index";
 import { SettingsScene } from "./screens/settings/index";
+import { HighscoresScene } from "./screens/highscores/index";
 
 export class SceneManager extends EventEmitter {
   private static instance: SceneManager;
@@ -23,6 +24,7 @@ export class SceneManager extends EventEmitter {
 		SpectateScene,  // 6
 		ResultsScene,   // 7
 		SettingsScene,  // 8
+		HighscoresScene,// 9
   ];
 
   private currentSceneIndex = 0;

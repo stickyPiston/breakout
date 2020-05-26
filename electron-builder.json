@@ -7,6 +7,15 @@
   "files": [
     "dist/**/*"
   ],
+	"extraResources": [
+    {
+      "from": "./src/renderer/database/",
+      "to": "database",
+      "filter": [
+        "**/*"
+      ]
+    }
+  ],
   "win": {
     "target": {
       "target": "portable",

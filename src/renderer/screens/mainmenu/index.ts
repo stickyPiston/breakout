@@ -38,6 +38,10 @@ export class MainMenu extends Container<Rect | Text> {
     pressT.pos = { x: (800 - 120) / 2, y: 270};
     this.add(pressT);
 
+		const highscores = new Text("Highscores", { font: "24px forced", fill: "#fff" });
+		highscores.pos = { x: 330, y: 310 };
+		this.add(highscores);
+
     const credit = new Text("This game is made by Job Vonk", { font: "18px forced", fill: "#fff" });
     credit.pos = { x: 20, y: 360 };
     this.add(credit);
@@ -52,7 +56,7 @@ export class MainMenu extends Container<Rect | Text> {
     super.update(dt, t);
 
 		// Move the cursor down or up the menu
-    if (keys.y === 1 && this.selectedIndex < 3) {
+    if (keys.y === 1 && this.selectedIndex < 4) {
 
 			new Sound(
 				"./res/sound/menu_move.wav",
@@ -93,6 +97,8 @@ export class MainMenu extends Container<Rect | Text> {
         SceneManager.getInstance().setScene(1);
 			else if (this.selectedIndex === 3)
 				SceneManager.getInstance().setScene(8);
+			else if (this.selectedIndex === 4)
+				SceneManager.getInstance().setScene(9);
     }
 
     // Periodically toggle text

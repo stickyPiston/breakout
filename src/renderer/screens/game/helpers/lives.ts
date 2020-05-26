@@ -7,7 +7,7 @@ export class Lives extends Text {
     y: 20
   }
 
-  private lives = 2;
+  private lives = 3;
 
   private constructor() {
     super("LIVES: 2", { font: "20px forced", fill: "#fff" });

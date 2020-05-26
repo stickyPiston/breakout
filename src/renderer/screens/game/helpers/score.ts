@@ -1,7 +1,8 @@
 import { Text } from "asdf-games";
 
-export class Score extends Text {
-  private static instance: Score
+export class ScoreHelper extends Text {
+  private static instance: ScoreHelper;
+
   pos = {
     x: 300,
     y: 20
@@ -25,12 +26,9 @@ export class Score extends Text {
 		this.score = 0;
 	}
 
-  static getInstance(): Score {
-    if (!Score.instance) {
-      Score.instance = new Score();
-    }
-
-    return Score.instance;
+  static getInstance() {
+    if (!ScoreHelper.instance) ScoreHelper.instance = new ScoreHelper();
+    return ScoreHelper.instance;
   }
 
   update = () => {

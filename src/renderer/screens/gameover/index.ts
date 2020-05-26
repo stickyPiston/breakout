@@ -1,10 +1,9 @@
 import { Container, Text, Rect } from "asdf-games";
-import { Score } from "../game/helpers/score";
 import { SceneManager } from "../../scenemanager";
 import { keys } from "../../constants";
-import { Timer } from "../game/helpers/timer";
+import { Score } from "../../utils/score";
 
-export class GameOverScene extends Container<Text | Rect> {
+export class GameOverScene extends Container<Text | Rect | Score> {
   private period = 0.75;
 
   private constructor() {
@@ -16,23 +15,15 @@ export class GameOverScene extends Container<Text | Rect> {
 
     // Add Game over title
     const gameOverText = new Text("GAME OVER!", { font: "48px forced", fill: "#fff" });
-    gameOverText.pos = { x: 263, y: 150 };
+    gameOverText.pos = { x: 263, y: 100 };
     this.add(gameOverText);
 
     // Add instructions
     const pressSpace = new Text("Press SPACE to return", { font: "24px forced", fill: "#fff" });
-    pressSpace.pos = { x: 270, y: 275 };
+    pressSpace.pos = { x: 270, y: 350 };
     this.add(pressSpace);
 
-    // TODO: Calculate score like it's done in multiplayer mode
-		const points = Score.getInstance().getScore();
-    const scoreText = new Text(`SCORE: ${points}`, { font: "24px forced", fill: "#fff" });
-    scoreText.pos = { x: 330, y: 200 };
-    this.add(scoreText);
-
-		// TODO: Add highscore to database
-
-		Timer.getInstance().resetTimer();
+		this.add(Score.getInstance());
   }
 
   static getInstance() {
@@ -52,10 +43,10 @@ export class GameOverScene extends Container<Text | Rect> {
     this.period -= dt;
 
     if (this.period <= 0) {
-      this.children[2].style.fill = "#000";
+      (this.children[2] as Text).style.fill = "#000";
       if (this.period <= -0.75) this.period = 0.75;
     } else {
-      this.children[2].style.fill = "#fff";
+      (this.children[2] as Text).style.fill = "#fff";
     }
   }
 }
