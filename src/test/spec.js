@@ -1,10 +1,11 @@
 const test = require('ava');
 const { Application } = require('spectron');
 const path = require('path');
+const electron = require('electron');
 
 test.before(async t => {
   t.context.app = new Application({
-    path: path.join(__dirname, '../../', 'node_modules', 'electron', 'dist', 'Electron.app', 'Contents', 'MacOS', 'Electron'),
+		path: electron,
 		args: [path.join(__dirname, '../../dist/main/main.js')]
   });
   

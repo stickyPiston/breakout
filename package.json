@@ -23,12 +23,12 @@
   "scripts": {
     "start": "electron-webpack dev",
     "compile": "electron-webpack",
-    "test": "npm run compile && ava",
-		"build": "npm run compile && electron-builder build",
-    "build:all": "npm run compile && electron-builder build -mwl",
-    "build:win": "npm run compile && electron-builder build --windows",
-    "build:mac": "npm run compile && electron-builder build --mac",
-    "build:linux": "npm run compile && electron-builder build --linux",
+    "test": "npm run compile && ava --timeout=3m --exit",
+		"build": "npm run compile && electron-builder build -p never",
+    "build:all": "npm run compile && electron-builder build -mwl -p never",
+    "build:win": "npm run compile && electron-builder build --windows -p never",
+    "build:mac": "npm run compile && electron-builder build --mac -p never",
+    "build:linux": "npm run compile && electron-builder build --linux -p never",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
