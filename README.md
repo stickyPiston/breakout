@@ -1,4 +1,6 @@
 # breakout
+[![Build Status](https://travis-ci.com/stickyPiston/breakout.svg?branch=master)](https://travis-ci.com/stickyPiston/breakout)
+
 The retro [breakout](https://en.wikipedia.org/wiki/Breakout_(video_game)) game built using asdf-games and electron.
 
 ### 🕹️ Play it yourself!
