@@ -9,6 +9,7 @@ export class Player extends Rect {
 
   released = false;
 	disabled = false;
+	reverted = false;
 
   private constructor() {
     super(125, 10, { fill: "#fff" });
@@ -19,11 +20,15 @@ export class Player extends Rect {
     return Player.instance;
   }
 
+	revertControls() {
+		this.reverted = !this.reverted;
+	}
+
   update(dt: number) {
     if (!this.released && !this.disabled && keys.action) this.released = true;
 
     if (keys.x !== 0 && !this.disabled) {
-      const futurePos = this.pos.x + keys.x * dt * this.speed;
+      const futurePos = this.pos.x + (this.reverted ? -1 : 1) * keys.x * dt * this.speed;
       this.pos.x = futurePos <= 805 - this.w && futurePos >= -5 ? futurePos : this.pos.x;
     }
   }

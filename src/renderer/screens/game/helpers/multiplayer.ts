@@ -1,7 +1,7 @@
 import { Rect, Container, Coordinates } from "asdf-games";
 import { socket } from "../../../constants";
 import { Player } from "../player";
-import { Ball } from "../ball";
+import { Balls } from "../balls";
 import { Blocks } from "../blocks";
 import { PowerupManager } from "./powerup";
 import { SceneManager } from "../../../scenemanager";
@@ -67,9 +67,11 @@ export class Multiplayer extends Container<unknown> {
 					paddle.pos = { x: data.p.x, y: 350 };
 					this.add(paddle);
 	
-					const ball = new Rect(10, 10, { fill: "rgba(255, 255, 255, 0.5)" });
-					ball.pos = data.b;
-					this.add(ball);
+					data.b.forEach(ball => {
+						const ballObject = new Rect(10, 10, { fill: "rgba(255, 255, 255, 0.5)" });
+						ballObject.pos = ball;
+						this.add(ballObject);
+					});
 
 					data.u.forEach(pos => {
 						const powerup = new Rect(25, 10, { fill: "rgba(255, 255, 255, 0.5)" });
@@ -99,7 +101,7 @@ export class Multiplayer extends Container<unknown> {
 		if (this.enabled) {
 			const k = Blocks.getInstance().children.map(block => block.index);
 			const p = { x: Math.floor(Player.getInstance().pos.x), w: Player.getInstance().w } ;
-			const b = { x: Math.round(Ball.getInstance().pos.x), y: Math.round(Ball.getInstance().pos.y) };
+			const b = Balls.getInstance().children.map(ball => ({ x: Math.round(ball.pos.x), y: Math.round(ball.pos.y) }));
 			const u = PowerupManager.getInstance().children.map(powerup => ({ x: Math.round(powerup.pos.x), y: Math.round(powerup.pos.y) }));
 
 			socket.emit("update", JSON.stringify({ k, p, b, u }));

@@ -1,12 +1,9 @@
 import { Rect, Sound, math } from "asdf-games";
 import { Player } from "./player";
 import { ScoreHelper } from "./helpers/score";
-import { Lives } from "./helpers/lives";
 import { Level } from "./helpers/level";
-import { SceneManager } from "../../scenemanager";
 import { PowerupManager } from "./helpers/powerup";
 import { Blocks } from "./blocks";
-import { Multiplayer } from "./helpers/multiplayer";
 import { SettingsScene } from "../settings/index";
 
 function playSound() {
@@ -18,8 +15,6 @@ function playSound() {
 }
 
 export class Ball extends Rect {
-  private static instance: Ball;
-
   private angle = Math.PI + 3 / 4 * Math.PI;
 	private lastHitItem!: "paddle" | "wall" | "block";
 	private lastHitTime = Date.now();
@@ -27,20 +22,16 @@ export class Ball extends Rect {
 
   pos = { x: 600, y: 200 };
 
-  private constructor() {
+  constructor() {
     super(10, 10, { fill: "#fff" });
   }
 
-  static getInstance() {
-    if (!Ball.instance) Ball.instance = new Ball();
-    return Ball.instance;
-  }
+	reset() {
+		this.angle = Math.PI + 3 / 4 * Math.PI;
+	}
 
   update(dt: number) {
     if (Player.getInstance().released) {
-
-			// TODO: Add improved ball physics
-			// TODO: Refactor entire ball boucing thing
 
       const futurePos = {
 				x: this.pos.x + Math.cos(this.angle) * this.speed * dt,
@@ -78,21 +69,13 @@ export class Ball extends Rect {
       if (yb >= hl - hb) { // Bottom wall
         this.angle = 2 * Math.PI - this.angle;
         this.speed = 200;
-        Player.getInstance().released = false;
-        this.pos.y = 340;
-        this.angle = 1 / 4 * Math.PI;
 
         new Sound(
 					"./res/sound/death.wav",			
 					{ volume: SettingsScene.getInstance().get("volume") }
 				).play();
-      
-        if (Lives.getInstance().deductLife() === 0) {
-					if (Multiplayer.getInstance().enabled) {
-						Multiplayer.getInstance().onDone();
-						Player.getInstance().disabled = true;
-					} else SceneManager.getInstance().setScene(2);
-        }
+				// @ts-ignore
+				this.dead = true;
       }
 
       if (yb <= 0) { // Top wall

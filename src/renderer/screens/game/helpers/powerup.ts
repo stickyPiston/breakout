@@ -1,7 +1,7 @@
 import { Container, Coordinates, Rect, math, entity, Sound } from "asdf-games";
 import { Player } from "../player";
 import { Blocks } from "../blocks";
-import { Ball } from "../ball";
+import { Balls } from "../balls";
 import { Lives } from "./lives";
 import { ScoreHelper } from "./score";
 import { Background } from "../background";
@@ -37,19 +37,24 @@ export class Powerup extends Rect {
 
   constructor() {
     super(25, 10, { fill: "#fff" });
-    this.type = math.randOneFrom(["long", "small", "delBlock", "life", "fasterBall", "slowerBall"]);
+		this.type = math.randOneFrom(["long", "small", "delBlock", "life", "fasterBall", "slowerBall", "extraBall", "revertControls"]);
   }
 
   private powerupEffect() {
-		// TODO: Add revert controls powerup
-		// TODO: Add mini powerup against opponent in multiplayer.
-    if (this.type === "long") Player.getInstance().w = 150;
-    if (this.type === "small") Player.getInstance().w = 50;
+		if (Player.getInstance().reverted && this.type !== "revertControls") Player.getInstance().revertControls();
+
+    if (this.type === "long") {
+			Player.getInstance().w = 150;
+			if (Player.getInstance().pos.x > 800 - 150) Player.getInstance().pos.x = 800 - 151;
+		}
+    if (this.type === "small") Player.getInstance().w = 75;
     // @ts-ignore
     if (this.type === "delBlock") math.randOneFrom(Blocks.getInstance().children).dead = true;
     if (this.type === "life") Lives.getInstance().addLife();
-    if (this.type === "fasterBall") Ball.getInstance().speed += 150;
-    if (this.type === "slowerBall") Ball.getInstance().speed = 250;
+    if (this.type === "fasterBall") Balls.getInstance().children[0].speed += 150;
+    if (this.type === "slowerBall") Balls.getInstance().children[0].speed = 250;
+		if (this.type === "extraBall") Balls.getInstance().addBall();
+		if (this.type === "revertControls") Player.getInstance().revertControls();
   }
 
   update(dt: number) {

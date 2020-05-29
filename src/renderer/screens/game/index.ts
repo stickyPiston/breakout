@@ -1,6 +1,6 @@
 import { Container, Rect } from "asdf-games";
 import { Player } from "./player";
-import { Ball } from "./ball";
+import { Balls } from "./balls";
 import { ScoreHelper } from "./helpers/score";
 import { Lives } from "./helpers/lives";
 import { Level } from "./helpers/level";
@@ -16,7 +16,7 @@ import { Timer } from "./helpers/timer";
 // TODO: Add party powerup with bar filling up.
 
 export class GameScene extends Container<
-  Rect | Player | Ball | Level | ScoreHelper | Lives | Container<unknown> | PowerupManager | Blocks | Timer
+  Rect | Player | Balls | Level | ScoreHelper | Lives | Container<unknown> | PowerupManager | Blocks | Timer
 > {
   private static instance: GameScene;
 
@@ -48,8 +48,8 @@ export class GameScene extends Container<
     this.add(Player.getInstance());
 
     // Add ball
-		Ball.getInstance().reset();
-    this.add(Ball.getInstance());
+		Balls.getInstance().reset();
+    this.add(Balls.getInstance());
 
     // Add stats
     this.add(ScoreHelper.getInstance());
