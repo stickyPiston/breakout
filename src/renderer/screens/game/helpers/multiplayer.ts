@@ -47,7 +47,7 @@ export class Multiplayer extends Container<unknown> {
 					const data = JSON.parse(raw.player) as {
 						k: number[],
 						p: { x: number, w: number },
-						b: Coordinates,
+						b: Coordinates[],
 						u: Coordinates[]
 					};
 	

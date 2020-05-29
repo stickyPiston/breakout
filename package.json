@@ -1,6 +1,6 @@
 {
   "name": "breakout",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "ISC",
   "description": "The retro breakout game built using asdf-games and electron.",
   "main": "dist/main/main.js",
