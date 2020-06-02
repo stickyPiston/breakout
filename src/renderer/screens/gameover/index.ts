@@ -2,6 +2,7 @@ import { Container, Text, Rect } from "asdf-games";
 import { SceneManager } from "../../scenemanager";
 import { keys } from "../../constants";
 import { Score } from "../../utils/score";
+import { Discord } from "../../discord-rpc";
 
 export class GameOverScene extends Container<Text | Rect | Score> {
   private period = 0.75;
@@ -27,6 +28,9 @@ export class GameOverScene extends Container<Text | Rect | Score> {
   }
 
   static getInstance() {
+
+		Discord.getInstance().setActivity({ details: "Crying about the game over", state: "Looking at the game over screen", instance: false });
+
     return new GameOverScene();
   }
 

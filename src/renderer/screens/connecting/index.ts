@@ -2,6 +2,7 @@ import { Container, Text, Rect } from "asdf-games";
 import { SceneManager } from "../../scenemanager";
 import { socket } from "../../constants";
 import { Multiplayer } from "../game/helpers/multiplayer";
+import { Discord } from "../../discord-rpc";
 
 export class SearchingScene extends Container<Text | Rect> {
   private static instance: SearchingScene;
@@ -35,7 +36,9 @@ export class SearchingScene extends Container<Text | Rect> {
 		if (!socket.connected) socket.open();
 		socket.emit("identification", { gameID: "brek", playersMax: 2 });
 		Multiplayer.getInstance().enabled = true;
-		
+	
+		Discord.getInstance().setActivity({ details: "Waiting for friends worldwide", state: "Searching for an opponent", instance: false });
+	
    	socket.on("gameStart", () => {
 			SearchingScene.instance.opponentFound = true;
 

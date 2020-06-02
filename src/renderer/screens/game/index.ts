@@ -73,6 +73,7 @@ export class GameScene extends Container<
 			details: Multiplayer.getInstance().enabled ? "Playing multiplayer mode" : "Playing level " + Level.getInstance().getLevel(),
 			state: "In a game",
 			instance: false,
+			startTimestamp: Timer.getInstance().startTime,
 			spectateSecret: Multiplayer.getInstance().enabled ? socket.id : undefined 
 		});
   }

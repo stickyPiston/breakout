@@ -2,6 +2,7 @@ import { Container, Text, Rect, Sound } from "asdf-games";
 import { keys } from "../../constants";
 import { SceneManager } from "../../scenemanager";
 import { SettingsScene } from "../settings/index";
+import { Discord } from "../../discord-rpc";
 
 export class MainMenu extends Container<Rect | Text> {
   private static instance: MainMenu;
@@ -49,6 +50,9 @@ export class MainMenu extends Container<Rect | Text> {
 
   static getInstance() {
     if (!MainMenu.instance) MainMenu.instance = new MainMenu();
+
+		Discord.getInstance().setActivity({ details: "Scrolling through the menus", state: "Idle", instance: false });
+
     return MainMenu.instance;
   }
 

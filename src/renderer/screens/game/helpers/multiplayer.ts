@@ -87,6 +87,7 @@ export class Multiplayer extends Container<unknown> {
 
 	onDone() {
 		if (this.OPdone && this.weDone) {
+			socket.emit("update", "Game done");
 			socket.removeAllListeners();
 			SceneManager.getInstance().setScene(7);
 		} else if (!this.weDone) {

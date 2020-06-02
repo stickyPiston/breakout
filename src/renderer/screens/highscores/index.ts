@@ -3,6 +3,7 @@ import { readFileSync } from "fs";
 import { keys } from "../../constants";
 import { SceneManager } from "../../scenemanager";
 import { join, dirname } from "path";
+import { Discord } from "../../discord-rpc";
 
 export class HighscoresScene extends Container<Text | Rect | Container<Text>> {
 	highscoresPath = /screens/gi.test(__dirname) ? join(dirname(__dirname), '../', 'database', 'highscore.json') : join(dirname(__dirname), 'database', 'highscore.json');
@@ -51,6 +52,8 @@ export class HighscoresScene extends Container<Text | Rect | Container<Text>> {
 	}
 
 	static getInstance() {
+		Discord.getInstance().setActivity({ details: "Proudly looking at their own scores", state: "Looking at the highscores", instance: false });
+
 		return new HighscoresScene();
 	}
 

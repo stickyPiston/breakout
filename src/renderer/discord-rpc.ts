@@ -9,24 +9,19 @@ export class Discord {
 	private rpc = new DiscordRPC.Client({ transport: 'ipc' });
 
 	private ready = false;
+	secret!: string;
 
 	private constructor() {
 		this.rpc.on('ready', () => {
 			this.ready = true
 
-//			this.setActivity({
-//				details: "Looking through the menus",
-//				state: "Idle",
-//				instance: false
-//			});
-
-			this.rpc.subscribe("GAME_SPECTATE", () => {
-				//remote.app.dock.bounce("critical");
+			this.rpc.subscribe("GAME_SPECTATE", (data: {secret: string}) => {
 				ipcRenderer.send("setFocus");
-				console.log("Spectating a game!");
-				SceneManager.getInstance().setScene(8);
-    		// This will run inside breakout. The game scene will be changed to show the game.
+				this.secret = data.secret;
+				SceneManager.getInstance().setScene(6);
   		});
+
+			this.setActivity({ details: "Looking through the menus", state: "Idle", instance: false });
 
 		});
 
