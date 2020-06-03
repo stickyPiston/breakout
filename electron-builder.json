@@ -7,6 +7,26 @@
   "files": [
     "dist/**/*"
   ],
+	"dmg": {
+		"title": "${productName} ${version} Installer",
+		"icon": "build/dmg_icon.icns",
+		"iconSize": 75,
+		"window": {
+			"height": 398
+		},
+		"contents": [
+			{
+				"x": 260,
+				"y": 199
+			},
+			{
+				"x": 540,
+				"y": 200,
+				"type": "link",
+				"path": "/Applications"
+			}
+		],
+	},
 	"extraResources": [
     {
       "from": "./src/renderer/database/",
@@ -17,17 +37,26 @@
     }
   ],
   "win": {
-    "target": {
-      "target": "portable",
-      "arch": [
-        "x64",
-        "ia32"
-      ]
-    }
+    "target": [
+			{
+      	"target": "portable",
+      	"arch": [
+        	"x64",
+        	"ia32"
+      	]
+    	},
+			{
+      	"target": "nsis",
+      	"arch": [
+        	"x64",
+        	"ia32"
+      	]
+    	},
+		]
   },
   "mac": {
     "target": {
-      "target": "dmg"
+      "target": "dmg",
     },
     "category": "public.app-category.arcade-games"
   },
