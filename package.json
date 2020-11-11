@@ -24,7 +24,7 @@
     "start": "electron-webpack dev",
     "compile": "electron-webpack",
     "test": "npm run compile && ava --timeout=3m --exit",
-		"build": "npm run compile && electron-builder build -p never",
+    "build": "npm run compile && electron-builder build -p never",
     "build:all": "npm run compile && electron-builder build -mwl -p never",
     "build:win": "npm run compile && electron-builder build --windows -p never",
     "build:mac": "npm run compile && electron-builder build --mac -p never",
@@ -34,7 +34,8 @@
   "dependencies": {
     "asdf-games": "^1.1.4",
     "discord-rpc": "^3.1.1",
-    "socket.io-client": "^2.3.0",
+    "discord.js": "^12.4.1",
+    "socket.io-client": "^3.0.1",
     "source-map-support": "^0.5.16"
   },
   "devDependencies": {

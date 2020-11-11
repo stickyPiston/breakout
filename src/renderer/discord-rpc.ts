@@ -21,7 +21,7 @@ export class Discord {
 				SceneManager.getInstance().setScene(6);
   		});
 
-			this.setActivity({ details: "Looking through the menus", state: "Idle", instance: false });
+			this.setActivity({ details: "Looking through the menus", state: "Idle", instance: false, largeImageText: "Playing breakout", largeImageKey: "logo" });
 
 		});
 
@@ -30,7 +30,10 @@ export class Discord {
 	}
 
 	setActivity(activity: {details: string, state: string, startTimestamp?: number, largeImageKey?: string, largeImageText?: string, instance: boolean, spectateSecret?: string}) {
-		if (this.ready)	this.rpc.setActivity(activity).catch(console.error);
+		if (this.ready) {
+			const alteredActivity = {...activity, largeImageKey: activity.largeImageKey || "logo", largeImageText: activity.largeImageText || "Playing Breakout"};
+			this.rpc.setActivity(alteredActivity).catch(console.error);
+		}
 	}
 
 	static getInstance() {

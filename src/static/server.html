@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change multiplayer server</title>
+</head>
+<body>
+  <h2>Enter the server's URL:</h2>
+  <form id="form">
+    <input id="url" placeholder="URL" />
+    <input type="submit" value="Change" />
+  </form>
+
+  <script>
+    const ipc = require("electron").ipcRenderer;
+    document.getElementById("form").addEventListener("submit", () => {
+      ipc.send("changeServer", document.getElementById("url").value);
+    });
+  </script>
+</body>
+</html>
